@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/half_transparent"
+    tools:context="com.mxingo.passenger.module.order.ChangePassengerActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_height"
+            android:gravity="center_vertical">
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="70dp"
+                android:layout_height="@dimen/default_height"
+                android:background="@null"
+                android:text="取消"
+                android:textColor="@color/text_color_gray"
+                android:textSize="@dimen/text_size_16" />
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="70dp"
+                android:layout_height="@dimen/default_height"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:text="确定"
+                android:textColor="@color/text_color_blue"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="换乘车人"
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/text_size_18" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/line_color" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/default_height">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/text_color_black"
+                        android:textSize="@dimen/text_size_18"
+                        android:text="乘车人:"
+                        android:id="@+id/tv_passenger_name"
+                        android:gravity="center"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/item_margin"
+                        android:background="@null"
+                        android:hint="请输入乘车人姓名"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textColor="@color/text_color_black"
+                        android:textSize="@dimen/text_size_16"
+                        android:layout_toRightOf="@+id/tv_passenger_name"
+                        android:id="@+id/et_passenger"
+                        android:gravity="center_vertical" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_color_black"
+                        android:textSize="@dimen/text_size_16"
+                        android:text="通讯录"
+                        android:id="@+id/tv_directory"
+                        android:gravity="center"
+                        android:background="@drawable/btn_activity_bg_box"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="@dimen/item_margin" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/line_color"
+                        android:layout_alignParentBottom="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/default_height"
+                    android:layout_marginTop="@dimen/item_margin">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/text_color_black"
+                        android:textSize="@dimen/text_size_18"
+                        android:text="手机号码:"
+                        android:id="@+id/tv_passenger_mobile"
+                        android:gravity="center" />
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/item_margin"
+                        android:background="@null"
+                        android:hint="请输入乘车人手机号码"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textColor="@color/text_color_black"
+                        android:textSize="@dimen/text_size_16"
+                        android:layout_toRightOf="@+id/tv_passenger_mobile"
+                        android:id="@+id/et_passenger_mobile"
+                        android:gravity="center_vertical"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/line_color"
+                        android:layout_alignParentBottom="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

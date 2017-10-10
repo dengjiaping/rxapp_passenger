@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.mxingo.passenger.module.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/mv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/btn_pub_order"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_height"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:background="@color/colorButtonBg"
+        android:text="预约接送机"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_18" />
+
+
+    <Button
+        android:id="@+id/btn_location"
+        android:layout_width="@dimen/default_height"
+        android:layout_height="@dimen/default_height"
+        android:layout_above="@+id/btn_pub_order"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:background="@drawable/ic_my_location" />
+
+
+</RelativeLayout>

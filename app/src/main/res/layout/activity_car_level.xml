@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg"
+    tools:context="com.mxingo.passenger.module.order.CarLevelActivity">
+
+    <include layout="@layout/action_bar" />
+
+    <ListView
+        android:id="@+id/lv_car_level"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/activity_bg"
+        android:paddingTop="@dimen/item_margin"
+        android:dividerHeight="@dimen/item_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</android.support.design.widget.CoordinatorLayout>

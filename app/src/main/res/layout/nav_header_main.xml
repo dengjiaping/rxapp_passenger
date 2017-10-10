@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_header_height"
+        android:background="@color/colorPrimaryDark">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.mxingo.passenger.widget.CircleImageView
+                android:id="@+id/civ_head"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="@dimen/item_margin"
+                android:src="@drawable/img_head" />
+
+            <TextView
+                android:id="@+id/tv_mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/item_margin"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_item_height">
+        <LinearLayout
+            android:id="@+id/ll_my_trip"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/ic_height"
+                android:layout_height="@dimen/ic_height"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:src="@drawable/ic_my_trip" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:paddingRight="@dimen/default_margin"
+                android:text="我的行程"
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line_color"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_item_height">
+        <LinearLayout
+            android:id="@+id/ll_coupon"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nav_item_height"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/ic_height"
+                android:layout_height="@dimen/ic_height"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:src="@drawable/ic_coupon" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:paddingRight="@dimen/default_margin"
+                android:text="用车券"
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line_color"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/nav_item_height"
+       android:visibility="visible">
+       <LinearLayout
+           android:id="@+id/ll_invoice"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/nav_item_height"
+           android:gravity="center_vertical">
+
+           <ImageView
+               android:layout_width="@dimen/ic_height"
+               android:layout_height="@dimen/ic_height"
+               android:layout_marginLeft="@dimen/default_margin"
+               android:src="@drawable/ic_invoice" />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginLeft="@dimen/default_margin"
+               android:text="发票管理"
+               android:textColor="@color/text_color_black"
+               android:textSize="@dimen/text_size_16" />
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentRight="true"
+                   android:layout_centerVertical="true"
+                   android:layout_marginRight="@dimen/default_margin"
+                   android:orientation="horizontal">
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginRight="@dimen/item_margin"
+                       android:text="满200包邮哦"
+                       android:textColor="@color/text_color_gray"
+                       android:textSize="@dimen/text_size_15" />
+
+
+                   <ImageView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:src="@drawable/ic_right_arrow"
+                       android:textColor="@color/text_color_black" />
+               </LinearLayout>
+
+           </RelativeLayout>
+
+       </LinearLayout>
+
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1px"
+           android:background="@color/line_color"
+           android:layout_alignParentBottom="true"/>
+   </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_item_height"
+        android:visibility="gone">
+        <LinearLayout
+            android:id="@+id/ll_message"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nav_item_height"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/ic_height"
+                android:layout_height="@dimen/ic_height"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:src="@drawable/ic_message" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:paddingRight="@dimen/default_margin"
+                android:text="消息中心"
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line_color"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_item_height">
+        <LinearLayout
+            android:id="@+id/ll_setting"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nav_item_height"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/ic_height"
+                android:layout_height="@dimen/ic_height"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:src="@drawable/ic_setting" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:paddingRight="@dimen/default_margin"
+                android:text="设置"
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line_color"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
+

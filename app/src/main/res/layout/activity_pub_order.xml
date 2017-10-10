@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg"
+    tools:context="com.mxingo.passenger.module.order.PubOrderActivity">
+
+    <include layout="@layout/action_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- tab -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/item_margin"
+                android:background="@color/white">
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tab_pub_order"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/white"
+                    android:paddingBottom="5dp"
+                    app:tabSelectedTextColor="@color/colorButtonBg"
+                    app:tabTextColor="@color/text_color_black">
+
+                    <android.support.design.widget.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="接机" />
+
+                    <android.support.design.widget.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="送机" />
+
+                    <android.support.design.widget.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="日租" />
+                </android.support.design.widget.TabLayout>
+            </RelativeLayout>
+            <!-- 航班号填写 -->
+            <RelativeLayout
+                android:id="@+id/rl_flight"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_height"
+                        android:layout_height="@dimen/ic_height"
+                        android:src="@drawable/ic_flight" />
+
+                    <TextView
+                        android:id="@+id/tv_flight"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:hint="填写航班号(选填)"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:textColor="@color/text_color_black"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textSize="@dimen/text_size_14"
+                        android:maxLength="10"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <!-- 预约时间 -->
+            <RelativeLayout
+                android:id="@+id/rl_book_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_height"
+                        android:layout_height="@dimen/ic_height"
+                        android:src="@drawable/ic_book_time" />
+
+                    <TextView
+                        android:id="@+id/tv_book_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:hint="预约时间"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:textColor="@color/text_color_black"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/line_color" />
+            </RelativeLayout>
+            <!-- 用车天数 -->
+            <RelativeLayout
+                android:id="@+id/rl_renter_day"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_height"
+                        android:layout_height="@dimen/ic_height"
+                        android:src="@drawable/ic_renter_day" />
+
+                    <TextView
+                        android:id="@+id/tv_renter_day"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:hint="您要用车的天数"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:textColor="@color/text_color_black"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/line_color" />
+            </RelativeLayout>
+            <!-- 出发地 -->
+            <RelativeLayout
+                android:id="@+id/rl_take_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_height"
+                        android:layout_height="@dimen/ic_height"
+                        android:src="@drawable/ic_address" />
+
+                    <TextView
+                        android:id="@+id/tv_take_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:hint="您从哪出发"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:textColor="@color/text_color_black"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/line_color" />
+            </RelativeLayout>
+            <!-- 航站楼 -->
+            <RelativeLayout
+                android:id="@+id/rl_airport"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_height"
+                        android:layout_height="@dimen/ic_height"
+                        android:src="@drawable/ic_airport" />
+
+                    <TextView
+                        android:id="@+id/tv_airport"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:hint="航站楼"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:textColor="@color/text_color_black"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textSize="@dimen/text_size_14"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/line_color" />
+            </RelativeLayout>
+            <!-- 去哪儿 -->
+            <RelativeLayout
+                android:id="@+id/rl_send_address"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_height"
+                        android:layout_height="@dimen/ic_height"
+                        android:src="@drawable/ic_address" />
+
+                    <TextView
+                        android:id="@+id/tv_send_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:hint="您要去哪儿"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:textColor="@color/text_color_black"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/line_color" />
+            </RelativeLayout>
+            <!-- 车型选择 -->
+            <RelativeLayout
+                android:id="@+id/rl_car_level"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/item_margin"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_height"
+                        android:layout_height="@dimen/ic_height"
+                        android:src="@drawable/ic_car" />
+
+                    <TextView
+                        android:id="@+id/tv_car_level"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:hint="请选择车型"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:textColor="@color/text_color_black"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+            </RelativeLayout>
+            <!-- 乘客 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin"
+                    android:id="@+id/ll_edit">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_height"
+                        android:layout_height="@dimen/ic_height"
+                        android:src="@drawable/ic_defult_head" />
+
+                    <TextView
+                        android:id="@+id/tv_passenger"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="自己"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:textColor="@color/text_color_black"
+                        android:textSize="@dimen/text_size_14" />
+
+                    <TextView
+                        android:id="@+id/tv_mobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/item_margin"
+                        android:textColor="@color/text_color_gray"
+                        android:textSize="@dimen/text_size_14" />
+                </LinearLayout>
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_passenger"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="自己"-->
+                        <!--android:textColor="@color/text_color_black"-->
+                        <!--android:textSize="@dimen/text_size_14" />-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/tv_mobile"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginLeft="@dimen/item_margin"-->
+                        <!--android:textColor="@color/text_color_gray"-->
+                        <!--android:textSize="@dimen/text_size_14" />-->
+
+                    <!--<ImageView-->
+                        <!--android:id="@+id/img_edit"-->
+                        <!--android:layout_width="@dimen/ic_height"-->
+                        <!--android:layout_height="@dimen/ic_height"-->
+                        <!--android:layout_marginLeft="@dimen/default_margin"-->
+                        <!--android:layout_marginRight="@dimen/default_margin"-->
+                        <!--android:src="@drawable/ic_edit" />-->
+                <!--</LinearLayout>-->
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/line_color" />
+            </RelativeLayout>
+            <!-- 备注 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <ImageView
+                        android:layout_width="@dimen/ic_height"
+                        android:layout_height="@dimen/ic_height"
+                        android:src="@drawable/ic_remark" />
+
+                    <EditText
+                        android:id="@+id/et_remark"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:hint="备注 (选填，20字以内)"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:textColor="@color/text_color_black"
+                        android:textColorHint="@color/text_color_gray"
+                        android:textSize="@dimen/text_size_14"
+                        android:maxLength="20"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/line_color" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_height"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/btn_pub_order"
+            android:text="确认下单"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_18"
+            android:id="@+id/btn_pub_order"
+            android:clickable="false" />
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

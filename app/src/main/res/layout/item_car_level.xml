@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/default_margin">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/img_car_level"
+            android:id="@+id/img_car_level"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@+id/img_car_level"
+            android:layout_marginLeft="@dimen/item_margin"
+            android:layout_centerVertical="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_14"
+                android:textColor="@color/text_color_black"
+                android:id="@+id/tv_level_name"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
+                android:textColor="@color/text_color_gray"
+                android:id="@+id/tv_level_size"
+                android:layout_marginTop="@dimen/item_margin"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/default_margin"
+            android:layout_centerVertical="true">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color_red"
+                    android:textSize="@dimen/text_size_20"
+                    android:id="@+id/tv_fee"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/趟"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="@dimen/text_size_14" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:background="@drawable/btn_blue_round"
+                android:textSize="@dimen/text_size_18"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/item_margin"
+                android:text="选择"
+                android:gravity="center"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

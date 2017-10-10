@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mxingo.passenger.module.order.SearchFlightActivity">
+
+    <include layout="@layout/action_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1e000000"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_margin"
+            android:background="@color/activity_bg" />
+
+        <EditText
+            android:id="@+id/et_flight"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_height"
+            android:background="@color/white"
+            android:hint="请输入航班号,如CA1517"
+            android:paddingLeft="@dimen/default_margin"
+            android:textColor="@color/text_color_black"
+            android:textColorHint="@color/text_color_gray"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line_color" />
+
+        <TextView
+            android:id="@+id/tv_flight"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_height"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_color_black"
+            android:textSize="@dimen/text_size_16"
+            android:visibility="gone"
+            android:paddingLeft="@dimen/default_margin"/>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

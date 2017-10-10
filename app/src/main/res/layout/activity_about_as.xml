@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg"
+    tools:context="com.mxingo.passenger.module.setting.AboutAsActivity">
+
+    <include layout="@layout/action_bar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:textSize="@dimen/text_size_14"
+            android:layout_marginTop="@dimen/default_margin"
+            android:textColor="@color/text_color_black"
+            android:padding="@dimen/default_margin"
+            android:text="
+       任行约车是锦华股份旗下网约车品牌，公司主要从事出行用车，接送机、日租、自驾等用车业务。平台业务覆盖全国机场，高铁站及主要旅游城市，可调度车辆10万余辆，司机2万名，车辆覆盖经济、舒适、商务、豪华、奢华及各类大巴车。现已与各大OTA、商旅平台、酒店集团，旅行社等建立深度合作关系。
+       \n\n
+       公司主营网约车平台（全国业务）接送机、接包车、自驾租车，城际旅游等各种网约车业务以及国际国内航空票务代理业务，为企事业单位及个人提供多方位的便捷出行服务。"/>
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

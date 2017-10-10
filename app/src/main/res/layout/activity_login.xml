@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mxingo.passenger.module.login.LoginActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_mobile"
+        android:layout_width="@dimen/login_width"
+        android:layout_height="@dimen/login_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/btn_white_round_5"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="登录"
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/text_size_18" />
+
+            <ImageView
+                android:id="@+id/img_mobile"
+                android:layout_width="@dimen/login_image_width"
+                android:layout_height="@dimen/login_image_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/item_margin"
+                android:padding="2dp"
+                android:src="@drawable/ic_cancel" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/et_mobile"
+            android:layout_width="@dimen/login_line_width"
+            android:layout_height="@dimen/login_line_height"
+            android:layout_marginTop="@dimen/item_margin"
+            android:background="@null"
+            android:gravity="bottom"
+            android:hint="请输入手机号"
+            android:inputType="number"
+            android:maxLength="11"
+            android:textColorHint="@color/text_color_gray" />
+
+        <View
+            android:layout_width="@dimen/login_line_width"
+            android:layout_height="1px"
+            android:background="@color/colorButtonBg" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginTop="@dimen/login_margin_top">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击 下一步 即表示同意"
+                android:textColor="@color/text_color_gray"
+                android:textSize="@dimen/text_size_10"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《用户协议》"
+                android:textColor="@color/text_color_blue"
+                android:textSize="@dimen/text_size_10"
+                android:id="@+id/tv_user_agreement"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="@dimen/login_line_width"
+            android:layout_height="@dimen/login_line_height"
+            android:layout_marginTop="@dimen/login_margin_top"
+            android:background="@color/btn_next"
+            android:text="下一步"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_18" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_vcode"
+        android:layout_width="@dimen/login_width"
+        android:layout_height="@dimen/login_height"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/btn_white_round_5"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_height">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="输入验证码"
+                android:textColor="@color/text_color_black"
+                android:textSize="@dimen/text_size_18" />
+
+            <ImageView
+                android:id="@+id/img_vcode_cancel"
+                android:layout_width="@dimen/login_image_width"
+                android:layout_height="@dimen/login_image_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/item_margin"
+                android:padding="2dp"
+                android:src="@drawable/ic_cancel" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/login_line_width"
+            android:layout_height="@dimen/login_line_height"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:textColorHint="@color/text_color_gray"
+                android:textSize="@dimen/text_size_18" />
+
+            <Button
+                android:id="@+id/tv_count_down"
+                android:layout_width="70dp"
+                android:layout_height="@dimen/login_image_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_gray_box"
+                android:text="59秒后重发"
+                android:gravity="center"
+                android:textColor="@color/text_color_gray"
+                android:textSize="@dimen/text_size_12" />
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="1px"
+            android:layout_height="1px"
+            android:id="@+id/et_vcode"
+            android:background="@android:color/transparent"
+            android:inputType="number"
+            android:maxLength="4"/>
+        <LinearLayout
+            android:layout_width="@dimen/login_line_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:focusable="true"
+            android:focusableInTouchMode="true"  >
+
+            <TextView
+                android:id="@+id/tv_vcode_1"
+                android:layout_width="@dimen/login_line_height"
+                android:layout_height="@dimen/login_line_height"
+                android:background="@drawable/et_vcode_box"
+                android:gravity="center"
+                android:maxLength="1"
+                android:textSize="@dimen/text_size_18"
+                android:textColor="@color/text_color_blue" />
+
+            <TextView
+                android:id="@+id/tv_vcode_2"
+                android:layout_width="@dimen/login_line_height"
+                android:layout_height="@dimen/login_line_height"
+                android:layout_marginLeft="@dimen/item_margin"
+                android:background="@drawable/et_vcode_box"
+                android:gravity="center"
+                android:maxLength="1"
+                android:textSize="@dimen/text_size_18"
+                android:textColor="@color/text_color_blue" />
+
+            <TextView
+                android:id="@+id/tv_vcode_3"
+                android:layout_width="@dimen/login_line_height"
+                android:layout_height="@dimen/login_line_height"
+                android:layout_marginLeft="@dimen/item_margin"
+                android:background="@drawable/et_vcode_box"
+                android:gravity="center"
+                android:maxLength="1"
+                android:textSize="@dimen/text_size_18"
+                android:textColor="@color/text_color_blue" />
+
+            <TextView
+                android:id="@+id/tv_vcode_4"
+                android:layout_width="@dimen/login_line_height"
+                android:layout_height="@dimen/login_line_height"
+                android:layout_marginLeft="@dimen/item_margin"
+                android:background="@drawable/et_vcode_box"
+                android:gravity="center"
+                android:maxLength="1"
+                android:textSize="@dimen/text_size_18"
+                android:textColor="@color/text_color_blue" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
