@@ -99,21 +99,22 @@ class MyTripsActivity : BaseActivity() {
         lvTrip.setOnItemClickListener { _, _, i, _ ->
             if (lvTrip.getChildAt(i) != footView) {
                 val item = adapter.getItem(i) as OrderEntity
-                if(item.orderStatus in OrderStatus.PUBORDER_TYPE..OrderStatus.FINISH_ORDER_TYPE || item.orderStatus == OrderStatus.REFUND_TYPE){
-                    OrderInfoActivity.startOrderInfoActivity(this,item.orderNo)
-                }else{
-                    PayOrderActivity.startPayOrderActivity(this,item.orderNo)
+                if (item.orderStatus in OrderStatus.PUBORDER_TYPE..OrderStatus.FINISH_ORDER_TYPE || item.orderStatus == OrderStatus.REFUND_TYPE) {
+                    OrderInfoActivity.startOrderInfoActivity(this, item.orderNo)
+                } else {
+                    PayOrderActivity.startPayOrderActivity(this, item.orderNo)
                 }
             }
         }
 
         progress.show()
         presenter.listOrder(userId, pageIndex, pageCount)
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if ((requestCode == Constants.REQUEST_ORDER_INFO_ACTIVITY || requestCode == Constants.REQUEST_PAY_ORDER_ACTIVITY)&& resultCode == Activity.RESULT_OK) {
+        if ((requestCode == Constants.REQUEST_ORDER_INFO_ACTIVITY || requestCode == Constants.REQUEST_PAY_ORDER_ACTIVITY) && resultCode == Activity.RESULT_OK) {
             progress.show()
             adapter.clear()
             pageIndex = 0
