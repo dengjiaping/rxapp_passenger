@@ -397,6 +397,7 @@
                         android:textColor="@color/text_color_black"
                         android:textColorHint="@color/text_color_gray"
                         android:textSize="@dimen/text_size_14"
+                        android:singleLine="true"
                         android:maxLength="20"/>
                 </LinearLayout>
 

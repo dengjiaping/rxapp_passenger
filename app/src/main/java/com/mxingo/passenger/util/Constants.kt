@@ -10,6 +10,7 @@ object Constants {
     const val URL = "url"
     const val USER_ID = "user_id"
     const val USER_AGREEMENT = "http://www.mxingo.com/mxnet/app/serviceCustom.html"
+    const val ABOUTUS="http://www.mxingo.com/mxnet/app/aboutUs.html"
     const val HELPER = "http://www.mxingo.com/mxnet/app/serviceHelp.html"
     const val ORDER_NO = "order_no"
     const val RX_PASSENGER = "rx_passenger"

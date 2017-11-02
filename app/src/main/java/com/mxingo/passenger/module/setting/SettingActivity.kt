@@ -61,7 +61,7 @@ class SettingActivity : BaseActivity() {
         tvToolbar.text = "设置"
 
         findViewById(R.id.tv_about_as).setOnClickListener {
-            AboutAsActivity.startAboutAsActivity(this)
+            AboutUsActivity.startAboutUsActivity(this,"关于我们",Constants.ABOUTUS)
         }
 
         findViewById(R.id.tv_helper).setOnClickListener {

@@ -4,13 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.TabLayout
 import android.support.v4.content.ContextCompat
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.Toolbar
-import android.widget.AbsListView
-import android.widget.LinearLayout
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 import com.mxingo.driver.module.BaseActivity
 import com.mxingo.driver.utils.Constants
 import com.mxingo.passenger.R
@@ -24,13 +22,14 @@ import com.mxingo.passenger.widget.ShowToast
 import com.squareup.otto.Subscribe
 import javax.inject.Inject
 
-class MyTripsActivity : BaseActivity() {
+class MyTripsActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
 
     private lateinit var lvTrip: ListView
     private lateinit var llEmpty: LinearLayout
     private lateinit var adapter: OrderAdapter
     private lateinit var srlRefresh: SwipeRefreshLayout
     private lateinit var footView: MyFooterView
+    private lateinit var tabLookOrder: TabLayout
 
     @Inject
     lateinit var presenter: MyPresenter
@@ -38,6 +37,7 @@ class MyTripsActivity : BaseActivity() {
     private var userId = 0
     private val pageCount = 20
     private var pageIndex = 0
+    private var tabAction: Int = 1
 
     companion object {
         @JvmStatic
@@ -62,6 +62,7 @@ class MyTripsActivity : BaseActivity() {
         srlRefresh = findViewById(R.id.srl_refresh) as SwipeRefreshLayout
         lvTrip = findViewById(R.id.lv_trip) as ListView
         llEmpty = findViewById(R.id.ll_empty) as LinearLayout
+        tabLookOrder = findViewById(R.id.tab_look_order) as TabLayout
 
         adapter = OrderAdapter(this)
         footView = MyFooterView(this)
@@ -69,6 +70,7 @@ class MyTripsActivity : BaseActivity() {
         lvTrip.adapter = adapter
         lvTrip.addFooterView(footView)
 
+        tabLookOrder.addOnTabSelectedListener(this)
         srlRefresh.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorButtonBg))
         srlRefresh.setOnRefreshListener {
             pageIndex = 0
@@ -132,13 +134,29 @@ class MyTripsActivity : BaseActivity() {
         progress.dismiss()
         srlRefresh.isRefreshing = false
         if (listOrder.rspCode.equals("00")) {
-            if (pageIndex == 0) {
+            if (tabAction == 2) {
                 adapter.addAll(listOrder.waitPayOrders)
             }
-            adapter.addAll(listOrder.orders)
+            if (tabAction == 1) {
+                adapter.addAll(listOrder.orders)
+            }
             footView.refresh = listOrder.orders.size >= pageCount
         } else {
             ShowToast.showCenter(this, listOrder.rspDesc)
         }
+    }
+
+    override fun onTabReselected(tab: TabLayout.Tab?) {
+    }
+
+    override fun onTabUnselected(tab: TabLayout.Tab?) {
+    }
+
+    override fun onTabSelected(tab: TabLayout.Tab?) {
+        tabAction = tab!!.position + 1
+        progress.show()
+        adapter.clear()
+        pageIndex = 0
+        presenter.listOrder(userId, pageIndex, pageCount)
     }
 }

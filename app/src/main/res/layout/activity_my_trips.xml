@@ -9,42 +9,83 @@
 
     <include layout="@layout/action_bar" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <android.support.v4.widget.SwipeRefreshLayout
+
+        <!-- tab -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/item_margin"
+            android:background="@color/white">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_look_order"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/white"
+                android:paddingBottom="5dp"
+                app:tabSelectedTextColor="@color/colorButtonBg"
+                app:tabTextColor="@color/text_color_black">
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="全部行程" />
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="待支付" />
+
+            </android.support.design.widget.TabLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/srl_refresh">
-            <ListView
-                android:id="@+id/lv_trip"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:dividerHeight="@dimen/item_margin"
-                android:divider="@color/activity_bg"
-                android:paddingTop="@dimen/item_margin"/>
-        </android.support.v4.widget.SwipeRefreshLayout>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:id="@+id/ll_empty">
-            <ImageView
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/srl_refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ListView
+                    android:id="@+id/lv_trip"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@color/activity_bg"
+                    android:dividerHeight="@dimen/item_margin"
+                    android:paddingTop="@dimen/item_margin" />
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_empty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_empty_trip"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_16"
-                android:textColor="@color/text_color_gray"
-                android:layout_marginTop="@dimen/default_margin"
-                android:text="您尚未有行程哦"/>
-        </LinearLayout>
-    </RelativeLayout>
+                android:layout_centerInParent="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_empty_trip" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:text="您尚未有行程哦"
+                    android:textColor="@color/text_color_gray"
+                    android:textSize="@dimen/text_size_16" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>
