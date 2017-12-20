@@ -68,7 +68,8 @@ class MyTripsActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
         footView = MyFooterView(this)
         lvTrip.emptyView = llEmpty
         lvTrip.adapter = adapter
-        lvTrip.addFooterView(footView)
+//        lvTrip.addFooterView(footView)
+        lvTrip.addFooterView(footView, null, false)
 
         tabLookOrder.addOnTabSelectedListener(this)
         srlRefresh.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorButtonBg))
@@ -98,8 +99,8 @@ class MyTripsActivity : BaseActivity(), TabLayout.OnTabSelectedListener {
 
         })
 
-        lvTrip.setOnItemClickListener { _, _, i, _ ->
-            if (lvTrip.getChildAt(i) != footView) {
+        lvTrip.setOnItemClickListener { _, view, i, _ ->
+            if (view != footView) {
                 val item = adapter.getItem(i) as OrderEntity
                 if (item.orderStatus in OrderStatus.PUBORDER_TYPE..OrderStatus.FINISH_ORDER_TYPE || item.orderStatus == OrderStatus.REFUND_TYPE) {
                     OrderInfoActivity.startOrderInfoActivity(this, item.orderNo)

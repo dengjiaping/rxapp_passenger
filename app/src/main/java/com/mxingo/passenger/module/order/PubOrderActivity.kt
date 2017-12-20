@@ -137,7 +137,7 @@ class PubOrderActivity : BaseActivity() {
         var date = Date().time
 
         datePicker = OnePicker(this, (1..30).mapTo(arrayListOf()) {
-            date +=  24 * 3600 * 1000
+            date += 24 * 3600 * 1000
             format.format(date)
         })
 
@@ -159,11 +159,11 @@ class PubOrderActivity : BaseActivity() {
         }
 
         rlBookTime.setOnClickListener {
-            if (orderType != OrderType.DAY_RENTER_TYPE) {
-                timePicker.show()
-            } else {
-                datePicker.show()
-            }
+            //            if (orderType != OrderType.DAY_RENTER_TYPE) {
+            timePicker.show()
+//            } else {
+//                datePicker.show()
+//            }
         }
 
         rlRenterDay.setOnClickListener {
@@ -178,14 +178,15 @@ class PubOrderActivity : BaseActivity() {
             SearchAddressActivity.startSearchAddressActivity(this, BaiduMapUtil.getInstance().cityName)
         }
         rlAirport.setOnClickListener {
-            AirportWebActivity.startAirportWebActivity(this, Constants.HTML_URL + "/airport.html?city=${BaiduMapUtil.getInstance().cityName}")
+            //            AirportWebActivity.startAirportWebActivity(this, Constants.HTML_URL + "/airport.html?city=${BaiduMapUtil.getInstance().cityName}")
+            AirportActivity.startAirportActivity(this, BaiduMapUtil.getInstance().cityName)
         }
 
         rlCarLevel.setOnClickListener {
             when (orderType) {
                 OrderType.DAY_RENTER_TYPE -> {
                     if (!TextUtil.isEmpty(tvBookTime.text.toString()) && poiInfo != null && !TextUtil.isEmpty(tvRenterDay.text.toString())) {
-                        CarLevelActivity.startCarLevelActivity(this, 0.0, 0.0, 0.0, 0.0, orderType, tvBookTime.text.toString().replace("日", "").replace("\\D".toRegex(), "-"), poiInfo!!.city, tvRenterDay.tag.toString().toInt())
+                        CarLevelActivity.startCarLevelActivity(this, 0.0, 0.0, 0.0, 0.0, orderType, tvBookTime.text.toString().substring(0, 10).replace("日", "").replace("\\D".toRegex(), "-"), poiInfo!!.city, tvRenterDay.tag.toString().toInt())
                     }
                 }
                 OrderType.TAKE_PLANE_TYPE -> {
@@ -328,7 +329,7 @@ class PubOrderActivity : BaseActivity() {
                         tvAirport.text.toString(), poiInfoAirport!!.location.longitude, poiInfoAirport!!.location.latitude, etRemark.text.toString(), "", "")
             }
             OrderType.DAY_RENTER_TYPE -> {
-                val sdf = SimpleDateFormat("yyyy年MM月dd日")
+                val sdf = SimpleDateFormat("yyyy年MM月dd日 HH点mm分")
                 val date = sdf.parse(tvBookTime.text.toString())
                 presenter.pubOrder(userId, carType!!.VehicleType, "", "", date.time, tvRenterDay.tag.toString().toInt(), tvPassenger.text.toString(), tvMobile.text.toString(),
                         orderType, (carType!!.Price * 100).toInt(), tvTakeAddress.text.toString(), poiInfo!!.location.longitude, poiInfo!!.location.latitude,
@@ -341,9 +342,9 @@ class PubOrderActivity : BaseActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
-                Constants.REQUEST_SELECT_ADDRESS_ACTIVITY -> {
+                Constants.REQUEST_SELECT_ADDRESS_ACTIVITY -> {//去哪儿
                     poiInfo = data!!.getParcelableExtra(Constants.ACTIVITY_BACK_DATA)
-                    if (orderType == OrderType.TAKE_PLANE_TYPE) {
+                    if (orderType == OrderType.TAKE_PLANE_TYPE) {//接机
                         if (!tvSendAddress.text.isEmpty()) {
                             dataEmpty[5] = 0
                             tvCarLevel.text = ""
@@ -361,7 +362,7 @@ class PubOrderActivity : BaseActivity() {
                     }
                     checkView()
                 }
-                Constants.REQUEST_AIRPORT_ACTIVITY -> {
+                Constants.REQUEST_AIRPORT_ACTIVITY -> {//航站楼
                     if (!tvCarLevel.text.isEmpty()) {
                         dataEmpty[5] = 0
                         tvCarLevel.text = ""
@@ -372,17 +373,17 @@ class PubOrderActivity : BaseActivity() {
                     dataEmpty[3] = 1
                     checkView()
                 }
-                Constants.REQUEST_CAR_LEVEL_ACTIVITY -> {
+                Constants.REQUEST_CAR_LEVEL_ACTIVITY -> {//选择车型
                     carType = data!!.getSerializableExtra(Constants.ACTIVITY_BACK_DATA) as QryCarLevelEntity.QueryResultListEntity
                     tvCarLevel.text = "${CarType.getKey(carType!!.VehicleType.toInt())}       ¥${carType!!.Price}/一趟"
                     dataEmpty[5] = 1
                     checkView()
                 }
-                Constants.REQUEST_ChANGE_PASSENGER_ACTIVITY -> {
+                Constants.REQUEST_ChANGE_PASSENGER_ACTIVITY -> {//乘车人
                     tvPassenger.text = data!!.getStringExtra(Constants.ACTIVITY_PASSENGER_NAME)
                     tvMobile.text = data.getStringExtra(Constants.ACTIVITY_PASSENGER_MOBILE)
                 }
-                Constants.REQUEST_FLIGHT_ACTIVITY -> {
+                Constants.REQUEST_FLIGHT_ACTIVITY -> {//航班号
                     val flight = data!!.getSerializableExtra(Constants.ACTIVITY_BACK_DATA) as FlightEntity.AvFltModelEntity
                     tvFlight.text = flight.FlightNo
                     if (!TextUtil.isEmpty(flight.ArrTime)) {

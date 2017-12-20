@@ -501,4 +501,62 @@ class MyPresenter(private val mBs: Bus, private val manger: MyManger) {
             }
         })
     }
+
+    fun suggestion(suggestion: String) {
+        manger.suggestion(suggestion, object : Callback<CommEntity> {
+            override fun onFailure(call: Call<CommEntity>, t: Throwable) {
+                val data = CommEntity()
+                data.rspCode = "1000"
+                data.rspDesc = "网络连接失败"
+                mBs.post(data)
+                t.printStackTrace()
+            }
+
+            override fun onResponse(call: Call<CommEntity>, response: Response<CommEntity>) {
+                LogUtils.d("suggestion", "" + response.body() + "")
+                if (response.body() != null) {
+                    mBs.post(response.body())
+                }
+            }
+        })
+    }
+
+    fun evaluate(orderNo: String, point: Int, evaluate: String) {
+        manger.evaluate(orderNo, point, evaluate, object : Callback<CommentResultEntity> {
+            override fun onResponse(call: Call<CommentResultEntity>, response: Response<CommentResultEntity>) {
+                LogUtils.d("evaluate", "" + response.body() + "")
+                if (response.body() != null) {
+                    mBs.post(response.body())
+                }
+            }
+
+            override fun onFailure(call: Call<CommentResultEntity>, t: Throwable) {
+                val data = CommentResultEntity()
+                data.rspCode = "1000"
+                data.rspDesc = "网络连接失败"
+                mBs.post(data)
+                t.printStackTrace()
+            }
+
+        })
+    }
+
+    fun qryAirport(city: String) {
+        manger.qryAirport(city, object : Callback<QryAirportEntity> {
+            override fun onResponse(call: Call<QryAirportEntity>, response: Response<QryAirportEntity>) {
+                LogUtils.d("qryAirport", "" + response.body() + "")
+                if (response.body() != null) {
+                    mBs.post(response.body())
+                }
+            }
+
+            override fun onFailure(call: Call<QryAirportEntity>, t: Throwable) {
+                val data = QryAirportEntity()
+                data.rspCode = "1000"
+                data.rspDesc = "网络连接失败"
+                mBs.post(data)
+                t.printStackTrace()
+            }
+        })
+    }
 }

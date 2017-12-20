@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg"
+    tools:context="com.mxingo.passenger.module.setting.SuggestionsActivity">
+
+    <include layout="@layout/action_bar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- tab -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/item_margin"
+            android:background="@color/white">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_suggestion"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_centerHorizontal="true"
+                android:background="@color/white"
+                android:paddingBottom="5dp"
+                app:tabSelectedTextColor="@color/colorButtonBg"
+                app:tabTextColor="@color/text_color_black">
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="建议"/>
+
+                <android.support.design.widget.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="投诉"/>
+
+            </android.support.design.widget.TabLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_suggestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/et_content_suggestion"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:background="@color/white"
+                android:gravity="top"
+                android:hint="请输入反馈，我们将为您不断改进。"
+                android:maxLength="200"
+                android:padding="5dp"
+                android:textSize="@dimen/text_size_15"/>
+
+            <TextView
+                android:id="@+id/tv_length"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/text_size_15"
+                android:gravity="right"
+                android:text="200"/>
+
+            <Button
+                android:id="@+id/btn_pub_suggestion"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="@dimen/default_margin"
+                android:background="@drawable/btn_pub_order"
+                android:clickable="false"
+                android:text="提交"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_complain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="如果您有以下问题，请咨询客服"
+                android:textColor="@color/text_color_gray"
+                android:textSize="@dimen/text_size_15"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="1.对订单有疑问"
+                android:textColor="#6c6c6c"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="2.投诉司机"
+                android:textColor="#6c6c6c"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:text="3.询问其他问题"
+                android:textColor="#6c6c6c"/>
+
+            <Button
+                android:id="@+id/btn_call"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_height"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="@dimen/default_margin"
+                android:background="@color/colorButtonBg"
+                android:text="客服热线：400-887-8810"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_18"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

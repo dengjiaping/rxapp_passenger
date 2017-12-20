@@ -19,6 +19,7 @@ import com.mxingo.passenger.module.base.data.UserInfoPreferences
 import com.mxingo.passenger.module.base.data.VersionInfo
 import com.mxingo.passenger.module.base.http.ComponentHolder
 import com.mxingo.passenger.module.base.http.MyPresenter
+import com.mxingo.passenger.module.login.LoginActivity
 import com.mxingo.passenger.util.StartUtil
 import com.mxingo.passenger.widget.MyProgress
 import com.mxingo.passenger.widget.ShowToast
@@ -61,16 +62,20 @@ class SettingActivity : BaseActivity() {
         tvToolbar.text = "设置"
 
         findViewById(R.id.tv_about_as).setOnClickListener {
-            AboutUsActivity.startAboutUsActivity(this,"关于我们",Constants.ABOUTUS)
+            AboutUsActivity.startAboutUsActivity(this, "关于我们", Constants.ABOUTUS)
         }
 
         findViewById(R.id.tv_helper).setOnClickListener {
-            WebViewActivity.startWebViewActivity(this,"帮助中心",Constants.HELPER)
+            WebViewActivity.startWebViewActivity(this, "帮助中心", Constants.HELPER)
 
         }
 
-        findViewById(R.id.rl_kefu).setOnClickListener {
-            StartUtil.callMobile("4008878810", this)
+        findViewById(R.id.tv_kefu).setOnClickListener {
+            if (UserInfoPreferences.getInstance().userId == 0) {
+                LoginActivity.startLoginActivity(this)
+            } else {
+                SuggestionsActivity.startSuggestionsActivity(this, UserInfoPreferences.getInstance().userId)
+            }
         }
 
         findViewById(R.id.btn_logout).setOnClickListener {

@@ -8,12 +8,14 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.baidu.mapapi.search.core.PoiInfo
 import com.mxingo.passenger.R
+import com.mxingo.passenger.model.AirportEntity
+import com.mxingo.passenger.model.QryAirportEntity
 
 /**
- * Created by zhouwei on 2017/8/1.
+ * Created by chendeqiang on 2017/8/1.
  */
-class AddressAdapter() : BaseAdapter() {
-    private var datas: ArrayList<PoiInfo> = arrayListOf()
+class AirportAdapter() : BaseAdapter() {
+    private var datas: ArrayList<AirportEntity> = arrayListOf()
     private lateinit var context: Context
     private lateinit var inflater: LayoutInflater
 
@@ -22,13 +24,13 @@ class AddressAdapter() : BaseAdapter() {
         inflater = LayoutInflater.from(context)
     }
 
-    fun addAllData(datas:List<PoiInfo>){
+    fun addAllData(datas: List<AirportEntity>) {
         clear()
         this.datas.addAll(datas)
         notifyDataSetChanged()
     }
 
-    fun clear(){
+    fun clear() {
         this.datas.clear()
         notifyDataSetChanged()
     }
@@ -37,16 +39,14 @@ class AddressAdapter() : BaseAdapter() {
         val view: View
         var holder: ViewHolder?
         if (convertView == null) {
-            view = inflater.inflate(R.layout.item_address, null)
+            view = inflater.inflate(R.layout.item_airport, null)
             holder = ViewHolder(view)
             view.tag = holder
         } else {
             view = convertView
             holder = view.tag as ViewHolder
         }
-        val poiInfo = datas[position]
-        holder.tvAddressName.text =  poiInfo.name
-        holder.tvAddress.text =  poiInfo.address
+        holder.tvPortName.text = datas[position].name
         return view
     }
 
@@ -64,14 +64,11 @@ class AddressAdapter() : BaseAdapter() {
 
     inner class ViewHolder {
 
-        var tvAddressName: TextView
-        var tvAddress: TextView
+        var tvPortName: TextView
+
 
         constructor(view: View) {
-            tvAddressName = view.findViewById(R.id.tv_address_name)
-            tvAddress = view.findViewById(R.id.tv_address)
+            tvPortName = view.findViewById(R.id.tv_airport_name)
         }
-
     }
-
 }

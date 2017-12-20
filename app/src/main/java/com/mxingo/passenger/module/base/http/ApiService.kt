@@ -90,4 +90,15 @@ interface ApiService {
     @POST(ApiConstants.checkVersion)
     fun checkVersion(@FieldMap map: TreeMap<String, Any>, @HeaderMap headers: Map<String, String>): Call<CheckVersionEntity>
 
+    @FormUrlEncoded
+    @POST(ApiConstants.suggestions)
+    fun suggestion(@FieldMap map: TreeMap<String, Any>, @HeaderMap headers: Map<String, String>): Call<CommEntity>
+
+    @FormUrlEncoded
+    @POST(ApiConstants.evaluate)
+    fun evaluate(@FieldMap map: TreeMap<String, Any>, @HeaderMap headers: Map<String, String>): Call<CommentResultEntity>
+
+    @FormUrlEncoded
+    @POST(ApiConstants.qryAirport)
+    fun qryAirport(@FieldMap map: TreeMap<String, Any>, @HeaderMap headers: Map<String, String>): Call<QryAirportEntity>
 }

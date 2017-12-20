@@ -4,15 +4,16 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import com.mxingo.driver.module.BaseActivity
 import com.mxingo.driver.utils.Constants
 import com.mxingo.passenger.R
 import com.mxingo.passenger.dialog.MessageDialog
 import com.mxingo.passenger.model.CommEntity
+import com.mxingo.passenger.model.CommentResultEntity
 import com.mxingo.passenger.model.OrderEntity
 import com.mxingo.passenger.model.QryOrderEntity
 import com.mxingo.passenger.module.base.http.ComponentHolder
@@ -20,6 +21,7 @@ import com.mxingo.passenger.module.base.http.MyPresenter
 import com.mxingo.passenger.util.StartUtil
 import com.mxingo.passenger.util.TextUtil
 import com.mxingo.passenger.widget.MyProgress
+import com.mxingo.passenger.widget.RatingBarView
 import com.mxingo.passenger.widget.ShowToast
 import com.squareup.otto.Subscribe
 import javax.inject.Inject
@@ -49,9 +51,19 @@ class OrderInfoActivity : BaseActivity() {
     private lateinit var tvCarNo: TextView
     private lateinit var tvDriverName: TextView
     private lateinit var btnCancel: Button
+    private lateinit var llPubComment: LinearLayout
+    private lateinit var ratingBar: RatingBarView
+    private lateinit var etContentComment: EditText
+    private lateinit var tvContentComment: TextView
+    private lateinit var btnPubComment: Button
+
+    private var dataComment = arrayListOf(0, 0)
+
     private var order: OrderEntity? = null
 
     private lateinit var orderNo: String
+    var level = 0
+
     @Inject
     lateinit var presenter: MyPresenter
     private lateinit var progress: MyProgress
@@ -107,7 +119,38 @@ class OrderInfoActivity : BaseActivity() {
         tvDriverName = findViewById(R.id.tv_driver_name) as TextView
         btnCancel = findViewById(R.id.btn_cancel) as Button
         llDriverTake = findViewById(R.id.ll_driver_take) as LinearLayout
+        llPubComment = findViewById(R.id.ll_pub_comment) as LinearLayout
+        ratingBar = findViewById(R.id.custom_ratingbar) as RatingBarView
+        etContentComment = findViewById(R.id.et_content_comment) as EditText
+        tvContentComment = findViewById(R.id.tv_content_comment) as TextView
+        btnPubComment = findViewById(R.id.btn_pub_comment) as Button
 
+        ratingBar.setOnRatingListener { any: Any?, i: Int ->
+            level = i
+            if (level > 0) {
+                dataComment[0] = 1
+                checkView()
+            }
+        }
+
+        etContentComment.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                if (etContentComment.text.length > 0) {
+                    dataComment[1] = 1
+                    checkView()
+                }
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+        })
+        btnPubComment.setOnClickListener {
+            progress.show()
+            presenter.evaluate(orderNo, level, etContentComment.text.toString())
+        }
         findViewById(R.id.img_mobile).setOnClickListener {
             StartUtil.callMobile(order!!.driverMobile, this)
         }
@@ -127,6 +170,16 @@ class OrderInfoActivity : BaseActivity() {
         }
     }
 
+    private fun checkView() {
+        if (dataComment[0] + dataComment[1] == 2) {
+            btnPubComment.isClickable = true
+            btnPubComment.isSelected = true
+        } else {
+            btnPubComment.isClickable = false
+            btnPubComment.isSelected = false
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         presenter.unregister(this)
@@ -135,11 +188,11 @@ class OrderInfoActivity : BaseActivity() {
     @Subscribe
     fun loadData(any: Any) {
         when (any::class.java) {
-            QryOrderEntity::class.java -> {
+            QryOrderEntity::class.java -> {//查询订单
                 progress.dismiss()
                 initOrder(any as QryOrderEntity)
             }
-            CommEntity::class.java -> {
+            CommEntity::class.java -> {//取消订单
                 progress.dismiss()
                 val data = any as CommEntity
                 if (data.rspCode == "00") {
@@ -147,6 +200,14 @@ class OrderInfoActivity : BaseActivity() {
                     finish()
                 } else {
                     ShowToast.showCenter(this, data.rspDesc)
+                }
+            }
+            CommentResultEntity::class.java -> {//评价订单
+                progress.dismiss()
+                val data = any as CommentResultEntity
+                if (data.rspCode == "00") {
+                    ShowToast.showCenter(this, data.rspDesc)
+                    presenter.qryOrder(orderNo)
                 }
             }
         }
@@ -197,6 +258,17 @@ class OrderInfoActivity : BaseActivity() {
                 btnCancel.visibility = View.GONE
             } else {
                 btnCancel.visibility = View.VISIBLE
+            }
+            if (order!!.orderStatus == OrderStatus.FINISH_ORDER_TYPE) {
+                llPubComment.visibility = View.VISIBLE
+                if (!TextUtil.isEmpty(order!!.evaluate) && order!!.point != 0) {
+                    ratingBar.isClickable = false
+                    btnPubComment.visibility = View.GONE
+                    etContentComment.visibility = View.GONE
+                    tvContentComment.visibility = View.VISIBLE
+                    ratingBar.setStar(order!!.point, false)
+                    tvContentComment.text = order!!.evaluate
+                }
             }
             if (order!!.orderStatus == OrderStatus.PAY_SUCC_TYPE) {
                 tvOrderType.append("(${CarType.getKey(order!!.carType)})")

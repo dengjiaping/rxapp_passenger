@@ -6,6 +6,7 @@ import com.mxingo.driver.module.BaseActivity
 import com.mxingo.passenger.MyApplication
 import com.mxingo.passenger.R
 
+
 class StartPageActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

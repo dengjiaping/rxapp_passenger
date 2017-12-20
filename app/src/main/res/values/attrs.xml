@@ -12,4 +12,13 @@
         <attr name="civ_fill_color" format="color" />
     </declare-styleable>
 
+
+    <declare-styleable name="RatingBarView">
+
+        <attr name="starImageSize" format="dimension"/>
+        <attr name="starCount" format="integer"/>
+        <attr name="starEmpty" format="reference"/>
+        <attr name="starFill" format="reference"/>
+
+    </declare-styleable>
 </resources>

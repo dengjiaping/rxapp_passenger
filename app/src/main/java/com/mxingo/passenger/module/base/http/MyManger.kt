@@ -3,6 +3,7 @@ package com.mxingo.passenger.module.base.http
 import com.mxingo.passenger.model.*
 import com.mxingo.passenger.module.base.log.LogUtils
 import com.mxingo.passenger.util.TextUtil
+import retrofit2.Callback
 
 /**
  * Created by zhouwei on 2017/6/22.
@@ -177,7 +178,7 @@ class MyManger(val apiService: ApiService) {
 
     }
 
-    fun qryInvoiceLimit(usrId: Int,callback: retrofit2.Callback<QryInvoiceLimitEntity>) {
+    fun qryInvoiceLimit(usrId: Int, callback: retrofit2.Callback<QryInvoiceLimitEntity>) {
         val map = java.util.TreeMap<String, Any>()
         map.put("usrId", usrId)
         val headers = HeaderUtil.getHeaders(map)
@@ -266,5 +267,33 @@ class MyManger(val apiService: ApiService) {
 
     }
 
+    fun suggestion(suggestion: String, callback: Callback<CommEntity>) {
+        val map = java.util.TreeMap<String, Any>()
+        map.put("suggestion", suggestion)
+        val headers = HeaderUtil.getHeaders(map)
+        LogUtils.d("suggestion 参数", map.toString())
+        LogUtils.d("headers", headers.toString())
+        apiService.suggestion(map, headers).enqueue(callback)
+    }
+
+    fun evaluate(orderNo: String, point: Int, evaluate: String, callback: Callback<CommentResultEntity>) {
+        val map = java.util.TreeMap<String, Any>()
+        map.put("orderNo", orderNo)
+        map.put("point", point)
+        map.put("evaluate", evaluate)
+        val headers = HeaderUtil.getHeaders(map)
+        LogUtils.d("evaluate 参数", map.toString())
+        LogUtils.d("headers", headers.toString())
+        apiService.evaluate(map, headers).enqueue(callback)
+    }
+
+    fun qryAirport(city: String, callback: Callback<QryAirportEntity>) {
+        val map = java.util.TreeMap<String, Any>()
+        map.put("city", city)
+        val headers = HeaderUtil.getHeaders(map)
+        LogUtils.d("qryAirport 参数", map.toString())
+        LogUtils.d("headers", headers.toString())
+        apiService.qryAirport(map, headers).enqueue(callback)
+    }
 
 }

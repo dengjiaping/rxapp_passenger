@@ -55,7 +55,6 @@ public class OrderEntity implements Serializable {
 
 
     /**
-
      * driverNo : saber001
      * orderMileage : 100
      * orderTime : 10000
@@ -107,6 +106,8 @@ public class OrderEntity implements Serializable {
 
     public String driverMobile;
     public String driverName;
+    public int point;
+    public String evaluate;
 
 
     @Override
@@ -146,6 +147,8 @@ public class OrderEntity implements Serializable {
                 ", payType=" + payType +
                 ", carType=" + carType +
                 ", createTime=" + createTime +
+                ",point=" + point +
+                ",evaluate=" + evaluate +
                 '}';
     }
 }
